@@ -65,13 +65,8 @@ cd audits-service-app
 ### Construir imagen
 
 ```bash
-docker build -t invoices-service-app .
-```
-
-### Ejecutar con Docker Compose
-
-```bash
-docker-compose up invoices-service-app
+cd invoices-service-app
+docker compose up --build
 ```
 
 ### 3. Configurar variables de entorno
