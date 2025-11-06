@@ -1,0 +1,16 @@
+default: &default
+  adapter: oracle_enhanced
+  username: <%= ENV.fetch('DB_USERNAME', 'system') %>
+  password: <%= ENV.fetch('DB_PASSWORD', '123456') %>
+  host: <%= ENV.fetch('DB_HOST', 'oracle') %>
+  port: <%= ENV.fetch('DB_PORT', 1521) %>
+  database: <%= ENV.fetch('DB_DATABASE', 'XEPDB1') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

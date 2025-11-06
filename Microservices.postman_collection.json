@@ -1,0 +1,267 @@
+{
+	"info": {
+		"_postman_id": "b2aaad70-cdc8-4aa2-b760-2e2d53be1e53",
+		"name": "Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10106091",
+		"_collection_link": "https://pomodoro-team.postman.co/workspace/Pomodoro-Team-Workspace~962d2598-cad7-44d2-83a1-c72881f3c8da/collection/10106091-b2aaad70-cdc8-4aa2-b760-2e2d53be1e53?action=share&source=collection_link&creator=10106091"
+	},
+	"item": [
+		{
+			"name": "Crear Cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"prueba\",\n    \"identification\": \"153S4343\",\n    \"type_identification\": \"NIT\",\n    \"address\": \"SSA2J\",\n    \"email\": \"prueba43@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.22:3000/api/v1/clients",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Cliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.22:3000/api/v1/clients/1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"clients",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.22:3000/api/v1/clients",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Audit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"entity\": \"Client\",\n    \"action\": \"POST\",\n    \"entity_id\": \"1\",\n    \"metadata\": \"Ejemplo\",\n    \"timestamp\": \"2035-09-09T14:34:15Z\",\n    \"service\": \"clients-service\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.22:3001/api/v1/audits",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"audits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Audit",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.22:3001/api/v1/audits/1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"audits",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Factura",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"client_id\": 1,\n    \"amount\": 1003,\n    \"due_date\": \"2025-11-06T14:34:15Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.22:3002/api/v1/invoices",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Factura",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.22:3002/api/v1/invoices/1",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"invoices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar Facturas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.22:3002/api/v1/invoices?start_date=\"2025-11-06T14:34:15Z\"&end_date=\"2025-11-06T15:34:15Z\"",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"22"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"v1",
+						"invoices"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "\"2025-11-06T14:34:15Z\""
+						},
+						{
+							"key": "end_date",
+							"value": "\"2025-11-06T15:34:15Z\""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: invoices-services-app
+    ports:
+      - "3002:3002"
+    environment:
+      NLS_LANG: AMERICAN_AMERICA.AL32UTF8
+      RAILS_ENV: development
+      DATABASE_URL: oracle://system:123456@oracle-xe-invoices:1521/XEPDB1
+      DB_USERNAME: system
+      DB_PASSWORD: 123456
+      DB_HOST: oracle
+      DB_PORT: 1521
+      DB_DATABASE: XEPDB1
+      URL_CLIENT_SERVICE: http://192.168.1.22:3000
+      URL_AUDIT_SERVICE: http://192.168.1.22:3001
+    depends_on:
+      oracle:
+        condition: service_healthy
+    networks:
+      - factunet
+    volumes:
+      - .:/app
+
+  oracle:
+    image: container-registry.oracle.com/database/express:latest
+    container_name: oracle-xe-invoices
+    ports:
+      - "1522:1521"
+      - "5501:5500"
+    environment:
+      ORACLE_PWD: 123456
+      ORACLE_CHARACTERSET: AL32UTF8
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "sqlplus",
+          "sys/123456@//localhost:1522/XE",
+          "as",
+          "sysdba",
+          "-S",
+          "SELECT 1 FROM dual;",
+        ]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+    networks:
+      - factunet
+
+networks:
+  factunet:
+    driver: bridge
